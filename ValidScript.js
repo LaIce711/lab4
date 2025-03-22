@@ -35,8 +35,8 @@ function validform(f) {
         return;
     }
     let age = parseInt(f.age.value, 10);
-    if (age < 1 || age > 120) {
-        alert("Age must be between 1 and 120.");
+    if (age <= 0 || age >= 200) {
+        alert("Age must be between 0 and 200.");
         f.age.focus();
         return;
     }
@@ -60,12 +60,12 @@ function validform(f) {
         f.phone.focus();
         return;
     }
-    if (!validatePhone(f.phone.value)) {
-        alert("Phone number must contain only numbers and be between 1-15 digits.");
-        f.phone.focus();
-        return;
-    }
+   if (!StringMatch(f.phone, /^\(\d{2,4}\)[\s.-]?\d{3}[\s.-]?\d{3}$/)) {
+    alert("Phone is not valid. Format: (XX) XXX-XXX");
+    f.phone.focus();
+    return;
+  }
 
-    alert("Form submitted successfully!");
+    alert("Ban da validate thanh cong!");
     f.submit();
 }
